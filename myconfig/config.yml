@@ -1,5 +1,5 @@
 database:
-  connectionUri: "database connection uri 6  7  8  99  00 i j k m x 0 i 2 3 4 6 7 8 9"
+  connectionUri: "database connection uri 6  7  8  99  00"
 
 server:
   port: 8080
