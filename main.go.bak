@@ -1,0 +1,83 @@
+go func() {
+
+		return // WatchConfig 起作用时，不需要定期检查变化
+
+		for {
+			<-time.After(5 * time.Second)
+			fmt.Printf(".")
+			confNewMd5, err := fileMd5(viper.ConfigFileUsed())
+			if err != nil {
+				panic(err)
+			}
+			if confMd5 != confNewMd5 {
+
+				if err := viper.ReadInConfig(); err != nil {
+					log.Fatalf("Error reading config file, %s", err)
+				}
+				//log.Println("ConfigFileUsed", viper.ConfigFileUsed())
+
+				err := viper.Unmarshal(&configuration)
+				if err != nil {
+					log.Fatalf("unable to decode into struct, %v", err)
+				}
+				log.Printf("database uri is %s", configuration.Database.ConnectionUri)
+				log.Printf("port for this application is %d", configuration.Server.Port)
+
+				confMd5 = confNewMd5
+			}
+			/* file2, err := os.Stat(viper.ConfigFileUsed())
+
+			if err != nil {
+				fmt.Println(err)
+			}
+
+			fmt.Println(file2.ModTime())
+
+			modTime := file2.ModTime()
+
+			if modTime != modifiedtime {
+				fmt.Println(">>>> Last modified time : ", modifiedtime)
+				if err := viper.ReadInConfig(); err != nil {
+					log.Fatalf("Error reading config file, %s", err)
+				}
+				//log.Println("ConfigFileUsed", viper.ConfigFileUsed())
+
+				err := viper.Unmarshal(&configuration)
+				if err != nil {
+					log.Fatalf("unable to decode into struct, %v", err)
+				}
+				log.Printf("database uri is %s", configuration.Database.ConnectionUri)
+				log.Printf("port for this application is %d", configuration.Server.Port)
+
+				modifiedtime = modTime
+
+			} */
+
+		}
+
+	}()
+
+
+
+	// get last modified time
+	/* 	file, err := os.Stat(viper.ConfigFileUsed())
+
+	   	if err != nil {
+	   		fmt.Println(err)
+	   	}
+
+	   	modifiedtime := file.ModTime()
+
+	   	fmt.Println("Last modified time : ", modifiedtime) */
+
+
+
+
+	///////////////////
+
+	confMd5, err := fileMd5(viper.ConfigFileUsed())
+	if err != nil {
+		panic(err)
+	}
+
+	///////////////////           

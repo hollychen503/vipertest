@@ -1,0 +1,5 @@
+database:
+  connectionUri: "database connection uri 32 3 2223 xx i j k"
+
+server:
+  port: 8080
