@@ -4,29 +4,27 @@ Simple example. Currently no tests implemented, no validity check of given param
 
 To run this example in linux use following:
 
-```{r, engine='bash', count_lines}
+``` 
 go get github.com/devilsray/golang-viper-config-example
 cd $GOPATH/src/github.com/devilsray/golang-viper-config-example/
 go run *.go
+```
 
 
 
 
-
----
-
+### viper tester
 
 ```
 docker run --rm -it  -v $PWD/testfolder:/dhmsconfig:ro  hollychen503/vipertest:latest
 ```
 
+### alpine
+
 ```
-# alpine
-apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
+apk update && apk upgrade && apk add --no-cache bash git openssh
 ```
 
 ```
-    
 docker run --rm -it -v $PWD/testfolder:/dhmsconfig hollychen503/alpine-git   bin/sh
 ```
